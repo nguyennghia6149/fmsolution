@@ -36,3 +36,9 @@ Route::group(array('prefix' => 'layout'), function () {
 
     Route::get('/location', array('as' => 'location','uses' => 'HomeController@staticLocation'));
 });
+
+
+Route::group(array('prefix' => 'admin', 'namespace' => 'Admin' ), function () {
+
+    Route::get('/dashboard', array('as' => 'homepage', 'uses' => 'AdminController@dashboard'));
+});
