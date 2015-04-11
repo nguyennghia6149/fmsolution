@@ -21,7 +21,7 @@ Route::group(array('prefix' => 'layout'), function () {
 
     Route::get('/equiment', array('as' => 'equiment','uses' => 'HomeController@staticEquiment'));
 
-    Route::get('/location', array('as' => 'location','uses' => 'HomeController@staticLocation'));
+    Route::get('/portfolio', array('as' => 'portfolio','uses' => 'HomeController@staticPortfolio'));
 });
 
 

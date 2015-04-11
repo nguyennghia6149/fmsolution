@@ -25,7 +25,15 @@ class Controller extends BaseController
                 [ 'name' => 'Contact', 'link' => 'company', 'anchor' => 'contact' ],
             ]
         ],
-        [ 'name' => 'Location', 'link' => 'location' ]
+        [ 'name' => 'Portfolio', 'link' => 'portfolio' ]
+    ];
+
+    public $breadcrumbs = [
+        'name' => 'Homepage',
+        'list' => [
+            [ 'name' => 'main-active', 'url' => 'homepage' ],
+            [ 'name' => 'sub-active' ],
+        ]
     ];
 
     public function __construct()
@@ -33,7 +41,8 @@ class Controller extends BaseController
 
     }
 
-    public function setMenuAct($name) {
+    public function setMenuAct($name)
+    {
         foreach ($this->menu as $key => $item) {
             if (isset($item['name']) && $item['name'] == $name) {
                 $this->menu[$key]['act'] = true;
@@ -41,8 +50,15 @@ class Controller extends BaseController
         }
     }
 
-    public function render_view($name){
+    public function render_view($name)
+    {
         view()->share('menu', $this->menu);
+        view()->share('breadcrumbs', $this->breadcrumbs);
         return view($name);
+    }
+
+    public function setBreadcrumb($list)
+    {
+        $this->breadcrumbs = $list;
     }
 }

@@ -6,7 +6,7 @@
 {!! HTML::script('default/js/respond.min.js') !!}
 {!! HTML::script('default/js/selectivizr-min.js') !!}
 <![endif]-->
-{!! HTML::script('style-switcher/style-switcher.js') !!} <!-- style switcher -->
+{!! HTML::script('default/style-switcher/style-switcher.js') !!} <!-- style switcher -->
 {!! HTML::script('default/js/ddlevelsmenu.js') !!} <!-- drop-down menu -->
 <script type="text/javascript">
     ddlevelsmenu.setup("nav", "topbar");
