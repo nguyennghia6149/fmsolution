@@ -1,0 +1,1 @@
+{!! HTML::script('admin/js/admin.js') !!}

@@ -1,25 +1,12 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 Route::get('/', 'HomeController@staticHome');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-//'before' => 'auth' : filter function
-//'middleware' => 'foo|bar' :  Has Foo And Bar Middleware
-//'namespace' => admin  :  Controllers Within The "App\Http\Controllers\Admin" Namespace
+
 Route::group(array('prefix' => 'layout'), function () {
 
     Route::get('/homepage', array('as' => 'homepage','uses' => 'HomeController@staticHome'));
@@ -40,5 +27,23 @@ Route::group(array('prefix' => 'layout'), function () {
 
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin' ), function () {
 
-    Route::get('/dashboard', array('as' => 'homepage', 'uses' => 'AdminController@dashboard'));
+    Route::get('/dashboard', array('as' => 'admin_dashboard', 'uses' => 'AdminController@staticDashboard'));
+
+    Route::get('/widgets', array('as' => 'admin_widgets', 'uses' => 'AdminController@staticWidgets'));
+
+    Route::get('/charts', array('as' => 'admin_charts', 'uses' => 'AdminController@staticCharts'));
+
+    Route::get('/uielements', array('as' => 'admin_uielements', 'uses' => 'AdminController@staticUielements'));
+
+    Route::get('/forms', array('as' => 'admin_forms', 'uses' => 'AdminController@staticForms'));
+
+    Route::get('/tables', array('as' => 'admin_tables', 'uses' => 'AdminController@staticTables'));
+
+    Route::get('/calendar', array('as' => 'admin_calendar', 'uses' => 'AdminController@staticCalendar'));
+
+    Route::get('/mailbox', array('as' => 'admin_mailbox', 'uses' => 'AdminController@staticMailbox'));
+
+    Route::get('/examples', array('as' => 'admin_examples', 'uses' => 'AdminController@staticExamples'));
+
+    Route::get('/error', array('as' => 'admin_error', 'uses' => 'AdminController@error'));
 });
