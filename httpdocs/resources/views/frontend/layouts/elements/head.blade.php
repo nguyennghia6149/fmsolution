@@ -4,4 +4,4 @@
 {!! HTML::style('default/css/responsive.css') !!}
 {!! HTML::style('default/css/colors/blue.css') !!}
 {!! HTML::style('default/style-switcher/style-switcher.css') !!}
-<link href="default/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
