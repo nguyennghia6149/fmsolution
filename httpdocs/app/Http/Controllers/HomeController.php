@@ -19,6 +19,7 @@ class HomeController extends Controller
     public function staticCompany()
     {
         $this->setMenuAct('Company');
+        //$this->setSidebarAct('About us');
         $Bcurm = [
             'name' => 'Company',
             'list' => [
@@ -28,6 +29,70 @@ class HomeController extends Controller
         ];
         $this->setBreadcrumb($Bcurm);
         return $this->render_view('page.company');
+    }
+
+    public function staticAboutus()
+    {
+        $this->setMenuAct('Company');
+        //$this->setSidebarAct('About Us');
+        $Bcurm = [
+            'name' => 'About Us',
+            'list' => [
+                [ 'name' => 'Home', 'url' => 'homepage'],
+                [ 'name' => 'Company', 'url' => 'company'],
+                [ 'name' => 'About Us']
+            ]
+        ];
+        $this->setBreadcrumb($Bcurm);
+        return $this->render_view('page.aboutus');
+    }
+
+    public function staticContact()
+    {
+        $this->setMenuAct('Company');
+        //$this->setSidebarAct('Contact');
+        $Bcurm = [
+            'name' => 'Contact',
+            'list' => [
+                [ 'name' => 'Home', 'url' => 'homepage'],
+                [ 'name' => 'Company', 'url' => 'company'],
+                [ 'name' => 'Contact']
+            ]
+        ];
+        $this->setBreadcrumb($Bcurm);
+        return $this->render_view('page.company');
+    }
+
+    public function staticTestimonials()
+    {
+        $this->setMenuAct('Company');
+        //$this->setSidebarAct('Testimonials');
+        $Bcurm = [
+            'name' => 'Testimonials',
+            'list' => [
+                [ 'name' => 'Home', 'url' => 'homepage'],
+                [ 'name' => 'Company', 'url' => 'company'],
+                [ 'name' => 'Testimonials']
+            ]
+        ];
+        $this->setBreadcrumb($Bcurm);
+        return $this->render_view('page.testimonials');
+    }
+
+    public function staticSitemap()
+    {
+        $this->setMenuAct('Company');
+        $this->setSidebarAct('Location');
+        $Bcurm = [
+            'name' => 'Location',
+            'list' => [
+                [ 'name' => 'Home', 'url' => 'homepage'],
+                [ 'name' => 'Company', 'url' => 'company'],
+                [ 'name' => 'Location']
+            ]
+        ];
+        $this->setBreadcrumb($Bcurm);
+        return $this->render_view('page.sitemap');
     }
 
     public function staticServices()

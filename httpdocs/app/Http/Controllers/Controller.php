@@ -18,11 +18,10 @@ class Controller extends BaseController
             'name' => 'Company',
             'link' => 'company',
             'sub' => [
-                [ 'name' => 'About Us', 'link' => 'company', 'anchor' => 'about-us' ],
-                [ 'name' => 'Caree', 'link' => 'company', 'anchor' => 'caree' ],
-                [ 'name' => 'Gallery', 'link' => 'company', 'anchor' => 'gallery' ],
-                [ 'name' => 'Customer', 'link' => 'company', 'anchor' => 'customer' ],
-                [ 'name' => 'Contact', 'link' => 'company', 'anchor' => 'contact' ],
+                [ 'name' => 'About Us', 'link' => 'about-us', 'anchor' => 'about-us' ],
+                [ 'name' => 'Contact', 'link' => 'contact', 'anchor' => 'contact' ],
+                [ 'name' => 'Testimonials', 'link' => 'testimonials', 'anchor' => 'testimonials' ],
+                [ 'name' => 'Location', 'link' => 'sitemap', 'anchor' => 'sitemap' ]
             ]
         ],
         [ 'name' => 'Portfolio', 'link' => 'portfolio' ]
@@ -36,9 +35,25 @@ class Controller extends BaseController
         ]
     ];
 
+    public $sidebar = [
+        ['name' =>'About Us', 'link' =>'/company/about-us'],
+        ['name' =>'Contact', 'link' =>'/company/contact'],
+        ['name' =>'Testimonials', 'link' =>'/company/testimonials'],
+        ['name' =>'Location', 'link' =>'/company/sitemap']
+    ];
+
     public function __construct()
     {
 
+    }
+
+    public function setSidebarAct($name)
+    {
+        foreach ($this->$sidebar as $key => $item) {
+            if (isset($item['name']) && $item(['name'] == $name)) {
+                $this->sidebar[$key]['act'] = true;
+            }
+        }
     }
 
     public function setMenuAct($name)
@@ -54,6 +69,7 @@ class Controller extends BaseController
     {
         view()->share('menu', $this->menu);
         view()->share('breadcrumbs', $this->breadcrumbs);
+        view()->share('sidebar', $this->sidebar);
         return view($name);
     }
 

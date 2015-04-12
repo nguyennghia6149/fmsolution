@@ -15,6 +15,14 @@ Route::group(array('prefix' => 'layout'), function () {
 
     Route::get('/company', array('as' => 'company','uses' => 'HomeController@staticCompany'));
 
+    Route::get('/company/about-us', array('as' => 'about-us','uses' => 'HomeController@staticAboutus'));
+
+    Route::get('/company/contact', array('as' => 'contact','uses' => 'HomeController@staticContact'));
+
+    Route::get('/company/testimonials', array('as' => 'testimonials','uses' => 'HomeController@staticTestimonials'));
+    
+    Route::get('/company/sitemap', array('as' => 'sitemap','uses' => 'HomeController@staticSitemap'));
+
     Route::get('/services', array('as' => 'services','uses' => 'HomeController@staticServices'));
 
     Route::get('/industries', array('as' => 'industries','uses' => 'HomeController@staticIndustries'));
