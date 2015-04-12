@@ -3,9 +3,9 @@
         <h3>Menu</h3>
         <nav>
             <ul class="menu">
-                @foreach ($sidebar as $key => $item)
-                    {{--*/ $act = isset($item['act']) ? 'class="active"' : '' /*--}}
-                    <li {!! $act !!} ><a href="..{{ $item['link'] }}">{{ $item['name'] }}</a></li>
+                @foreach ($sidebar as $item)
+                    {{--*/ $act = isset($item['act']) ? 'class="current"' : '' /*--}}
+                    <li {!! $act !!} ><a href="{{ route($item['link']) }}">{{ $item['name'] }}</a>
                 @endforeach
             </ul>
         </nav>

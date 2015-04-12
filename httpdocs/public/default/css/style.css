@@ -1,6 +1,9 @@
 .footer-inc-script{
 	margin: 0px;
 }
+.widget .menu li.current {
+	font-weight: bold;
+}
 img.logo{
 	width: 200px;
 	position: absolute;

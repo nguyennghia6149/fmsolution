@@ -12,14 +12,12 @@ class HomeController extends Controller
 
     public function staticHome()
     {
-        $this->setMenuAct('Homepage');
+        $this->setMenuAct('homepage');
         return $this->render_view('page.homepage');
     }
 
     public function staticCompany()
     {
-        $this->setMenuAct('Company');
-        //$this->setSidebarAct('About us');
         $Bcurm = [
             'name' => 'Company',
             'list' => [
@@ -28,13 +26,15 @@ class HomeController extends Controller
             ]
         ];
         $this->setBreadcrumb($Bcurm);
-        return $this->render_view('page.company');
+
+        $this->setMenuAct('company');
+        $this->setSidebar('company', 'about-us');
+
+        return $this->render_view('page.company.aboutus');
     }
 
     public function staticAboutus()
     {
-        $this->setMenuAct('Company');
-        //$this->setSidebarAct('About Us');
         $Bcurm = [
             'name' => 'About Us',
             'list' => [
@@ -44,13 +44,15 @@ class HomeController extends Controller
             ]
         ];
         $this->setBreadcrumb($Bcurm);
-        return $this->render_view('page.aboutus');
+
+        $this->setMenuAct('company');
+        $this->setSidebar('company', 'about-us');
+        
+        return $this->render_view('page.company.aboutus');
     }
 
     public function staticContact()
     {
-        $this->setMenuAct('Company');
-        //$this->setSidebarAct('Contact');
         $Bcurm = [
             'name' => 'Contact',
             'list' => [
@@ -60,13 +62,15 @@ class HomeController extends Controller
             ]
         ];
         $this->setBreadcrumb($Bcurm);
-        return $this->render_view('page.company');
+
+        $this->setMenuAct('company');
+        $this->setSidebar('company', 'contact');
+
+        return $this->render_view('page.company.contact');
     }
 
     public function staticTestimonials()
     {
-        $this->setMenuAct('Company');
-        //$this->setSidebarAct('Testimonials');
         $Bcurm = [
             'name' => 'Testimonials',
             'list' => [
@@ -76,13 +80,16 @@ class HomeController extends Controller
             ]
         ];
         $this->setBreadcrumb($Bcurm);
-        return $this->render_view('page.testimonials');
+
+        $this->setMenuAct('company');
+        $this->setSidebar('company', 'testimonials');
+
+        return $this->render_view('page.company.testimonials');
     }
 
-    public function staticSitemap()
+    public function staticLocation()
     {
-        $this->setMenuAct('Company');
-        $this->setSidebarAct('Location');
+        
         $Bcurm = [
             'name' => 'Location',
             'list' => [
@@ -92,12 +99,16 @@ class HomeController extends Controller
             ]
         ];
         $this->setBreadcrumb($Bcurm);
-        return $this->render_view('page.sitemap');
+
+        $this->setMenuAct('company');
+        $this->setSidebar('company', 'location');
+
+        return $this->render_view('page.company.location');
     }
 
     public function staticServices()
     {
-        $this->setMenuAct('Services');
+        $this->setMenuAct('services');
         $Bcurm = [
             'name' => 'Services',
             'list' => [
@@ -111,7 +122,7 @@ class HomeController extends Controller
 
     public function staticIndustries()
     {
-        $this->setMenuAct('Industries');
+        $this->setMenuAct('industries');
         $Bcurm = [
             'name' => 'Industries',
             'list' => [
@@ -125,7 +136,7 @@ class HomeController extends Controller
 
     public function staticEquiment()
     {
-        $this->setMenuAct('Equiment');
+        $this->setMenuAct('equiment');
         $Bcurm = [
             'name' => 'Equiment',
             'list' => [
@@ -139,7 +150,7 @@ class HomeController extends Controller
 
     public function staticPortfolio()
     {
-        $this->setMenuAct('Portfolio');
+        $this->setMenuAct('portfolio');
         $Bcurm = [
             'name' => 'Portfolio',
             'list' => [

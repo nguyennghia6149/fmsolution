@@ -21,7 +21,7 @@ Route::group(array('prefix' => 'layout'), function () {
 
     Route::get('/company/testimonials', array('as' => 'testimonials','uses' => 'HomeController@staticTestimonials'));
     
-    Route::get('/company/sitemap', array('as' => 'sitemap','uses' => 'HomeController@staticSitemap'));
+    Route::get('/company/location', array('as' => 'location','uses' => 'HomeController@staticLocation'));
 
     Route::get('/services', array('as' => 'services','uses' => 'HomeController@staticServices'));
 

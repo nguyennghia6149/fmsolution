@@ -1,8 +1,8 @@
 <header id="header" class="container clearfix">
 	<!-- begin logo -->
-    <h1 id="logo">
+    <a id="logo" href="/">
     	<img class="logo" src="/default/images/logo.png">
-    </h1>
+    </a>
     <!-- end logo -->
     
     <!-- begin navigation wrapper -->

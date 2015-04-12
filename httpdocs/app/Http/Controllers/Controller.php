@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesCommands;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
@@ -21,11 +22,13 @@ class Controller extends BaseController
                 [ 'name' => 'About Us', 'link' => 'about-us', 'anchor' => 'about-us' ],
                 [ 'name' => 'Contact', 'link' => 'contact', 'anchor' => 'contact' ],
                 [ 'name' => 'Testimonials', 'link' => 'testimonials', 'anchor' => 'testimonials' ],
-                [ 'name' => 'Location', 'link' => 'sitemap', 'anchor' => 'sitemap' ]
+                [ 'name' => 'Location', 'link' => 'location', 'anchor' => 'location' ]
             ]
         ],
         [ 'name' => 'Portfolio', 'link' => 'portfolio' ]
     ];
+
+    public $sidebar = [];
 
     public $breadcrumbs = [
         'name' => 'Homepage',
@@ -35,32 +38,36 @@ class Controller extends BaseController
         ]
     ];
 
-    public $sidebar = [
-        ['name' =>'About Us', 'link' =>'/company/about-us'],
-        ['name' =>'Contact', 'link' =>'/company/contact'],
-        ['name' =>'Testimonials', 'link' =>'/company/testimonials'],
-        ['name' =>'Location', 'link' =>'/company/sitemap']
-    ];
-
     public function __construct()
     {
-
     }
 
-    public function setSidebarAct($name)
+    public function setSidebar($name, $act)
     {
-        foreach ($this->$sidebar as $key => $item) {
-            if (isset($item['name']) && $item(['name'] == $name)) {
-                $this->sidebar[$key]['act'] = true;
+        foreach ($this->menu as $item) {
+            if ($item['link'] == $name) {
+                $this->sidebar = $item['sub'];
             }
+        }
+
+        if (isset($this->sidebar)) {
+            $this->setAct('sidebar', $act);
         }
     }
 
     public function setMenuAct($name)
     {
-        foreach ($this->menu as $key => $item) {
-            if (isset($item['name']) && $item['name'] == $name) {
-                $this->menu[$key]['act'] = true;
+        $this->setAct('menu', $name);
+        
+    }
+
+    public function setAct($name, $link_act)
+    {
+        if (isset($this->$name)) {
+            foreach ($this->$name as $key => $item) {
+                if (isset($item['link']) && $item['link'] == $link_act) {
+                    $this->{$name}[$key]['act'] = true;
+                }
             }
         }
     }
@@ -70,6 +77,7 @@ class Controller extends BaseController
         view()->share('menu', $this->menu);
         view()->share('breadcrumbs', $this->breadcrumbs);
         view()->share('sidebar', $this->sidebar);
+
         return view($name);
     }
 
