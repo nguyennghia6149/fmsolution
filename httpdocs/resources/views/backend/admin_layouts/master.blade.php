@@ -9,11 +9,9 @@
         @yield('head')
     @show
 </head>
-<body class="boxed">
-    <div id="wrap">
+<body>
+    <div id="wrapper">
         @yield('header')
-
-        @yield('menu')
 
         @yield('main-content')
 

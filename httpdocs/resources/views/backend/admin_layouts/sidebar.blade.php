@@ -1,16 +1,22 @@
-<nav id="sidebar">
-    <ul id="sidebar-list" class="clearfix">
-        @foreach ($menu as $key => $parent)
-            {{--*/ $act = isset($parent['act']) ? 'class="current"' : '' /*--}}
-            {{--*/ $rel = isset($parent['sub']) ? 'rel="submenu' . $key . '"' : '' /*--}}
-            <li {!! $act !!} ><a href="{{ route($parent['link']) }}" {!! $rel !!} >{{ $parent['name'] }}</a>
-            @if (isset($parent['sub']) && count($parent['sub']) > 0)
-                <ul id="subsidebar{{ $key }}" class="ddsubmenustyle">
-                    @foreach ($parent['sub'] as $sub)
-                        <li><a href="{{ route($sub['link']) }}">{{ $sub['name'] }}</a></li>
-                    @endforeach
-                </ul>
-            @endif
-        @endforeach
-    </ul>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    @include('admin_layouts.topmenu')
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                 @foreach ($menu as $key => $parent)
+                    {{--*/ $act = isset($parent['act']) ? 'class="active"' : '' /*--}}
+                    {{--*/ $arrow = isset($parent['sub']) ? '<span class="fa arrow"></span>' : '' /*--}}
+                    <li {!! $act !!}><a href="{{ route($parent['link']) }}" >{{ $parent['name'] }}  {!!  $arrow !!} </a>
+                    @if (isset($parent['sub']) && count($parent['sub']) > 0)
+                        <ul class="nav nav-second-level">
+                            @foreach ($parent['sub'] as $sub)
+                                <li><a href="{{ route($sub['link']) }}">{{ $sub['name'] }}</a></li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
 </nav>

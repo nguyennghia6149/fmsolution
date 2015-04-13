@@ -14,10 +14,6 @@
 	@include('admin_elements.header')
 @stop
 
-@section('menu')
-    @include('admin_layouts.menu')
-@stop
-
 @section('main-content')
 	@include('admin_layouts.sidebar')
 @stop

@@ -1,0 +1,38 @@
+#!/bin/bash
+DBUSER="root"
+DBPASS=""
+DB="fmsolution"
+SCHEMAPATH="data"
+RANDOM=$$$(date +%s)
+
+# Create directory if it doesn't exist
+if [ ! -d "$SCHEMAPATH" ]; then
+    mkdir -m 777 -p ${SCHEMAPATH}
+fi
+
+exec < /dev/tty
+while true; do
+    read -p "do you want export database? (y/n) " yn
+
+    if [ "$yn" = "" ]; then
+        yn="n"
+    fi
+    case $yn in
+        [y] )
+            read -p "enter file_name of sql file " filename
+
+            if [ "$filename" = "" ]; then
+                filename="$RANDOM"
+            fi
+
+            if [ ! -d "$SCHEMAPATH/$filename" ]; then
+                mysqldump -u $DBUSER -p$DBPASS $DB > $SCHEMAPATH/$filename
+                git add $SCHEMAPATH/$DB.sql
+            fi
+            break;;
+        [n] )
+            exit 0 ;;
+        * ) echo "Please answer y or n for yes or no.";;
+    esac
+done
+exit 0
