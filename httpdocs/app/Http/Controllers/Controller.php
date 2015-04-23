@@ -1,5 +1,5 @@
-<?php namespace App\Http\Controllers;
-
+<?php 
+namespace App\Http\Controllers;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -14,7 +14,7 @@ class Controller extends BaseController
         [ 'name' => 'Homepage', 'link' => 'homepage' ],
         [ 'name' => 'Services', 'link' => 'services' ],
         [ 'name' => 'Industries', 'link' => 'industries' ],
-        [ 'name' => 'Equiment', 'link' => 'equiment' ],
+        [ 'name' => 'Equipment', 'link' => 'equipment' ],
         [
             'name' => 'Company',
             'link' => 'company',

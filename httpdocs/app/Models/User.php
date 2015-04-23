@@ -1,5 +1,5 @@
-<?php namespace App;
-
+<?php 
+namespace App\Models;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -10,25 +10,30 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	use Authenticatable, CanResetPassword;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
 	protected $table = 'users';
 
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $fillable = ['name', 'email', 'password'];
+	public static function rule()
+	{
+		return [
+			'username' => 'required|alpha_num|unique:users',
+			'email' => 'required|email|unique:users',
+			'password' => 'required|alpha_num|between:6,20|confirmed',
+			'password_confirmation ' => 'alpha_num|between:6,20'
+		];
+	}
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
+	public static function changerule()
+	{
+		return [
+			'username' => 'alpha_num',
+			'email' => 'email',
+			'password' => 'required|alpha_num|between:6,20|confirmed',
+			'password_confirmation ' => 'alpha_num|between:6,20'
+		];
+	}
+
+	protected $fillable = ['username', 'email', 'password'];
+
 	protected $hidden = ['password', 'remember_token'];
 
 }

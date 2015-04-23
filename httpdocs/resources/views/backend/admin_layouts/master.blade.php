@@ -9,14 +9,13 @@
         @yield('head')
     @show
 </head>
-<body>
-    <div id="wrapper">
-        @yield('header')
+<body @yield('body_class')>
+    
+    @yield('header')
 
-        @yield('main-content')
+    @yield('main-content')
 
-        @yield('footer')
-    </div>
+    @yield('footer')
     
     <!-- include script -->
     <section class="footer-inc-script">

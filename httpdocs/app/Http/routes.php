@@ -27,31 +27,41 @@ Route::group(array('prefix' => 'layout'), function () {
 
     Route::get('/industries', array('as' => 'industries','uses' => 'HomeController@staticIndustries'));
 
-    Route::get('/equiment', array('as' => 'equiment','uses' => 'HomeController@staticEquiment'));
+    Route::get('/equipment', array('as' => 'equipment','uses' => 'HomeController@staticEquipment'));
 
     Route::get('/portfolio', array('as' => 'portfolio','uses' => 'HomeController@staticPortfolio'));
 });
 
 
-Route::group(array('prefix' => 'admin', 'namespace' => 'Admin' ), function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
 
-    Route::get('/dashboard', array('as' => 'admin_dashboard', 'uses' => 'AdminController@staticDashboard'));
+    Route::get('/dashboard', array('as' => 'admin_dashboard'));
 
-    Route::get('/widgets', array('as' => 'admin_widgets', 'uses' => 'AdminController@staticWidgets'));
+    Route::get('/boxes', array('as' => 'admin_boxes'));
 
-    Route::get('/charts', array('as' => 'admin_charts', 'uses' => 'AdminController@staticCharts'));
+    Route::get('/equipments', array('as' => 'admin_equipments'));
 
-    Route::get('/uielements', array('as' => 'admin_uielements', 'uses' => 'AdminController@staticUielements'));
+    Route::get('/emailpatterns', array('as' => 'admin_email_patterns'));
 
-    Route::get('/forms', array('as' => 'admin_forms', 'uses' => 'AdminController@staticForms'));
+    Route::get('/testimonials', array('as' => 'admin_testimonials'));
 
-    Route::get('/tables', array('as' => 'admin_tables', 'uses' => 'AdminController@staticTables'));
+    Route::get('/clients', array('as' => 'admin_clients'));
 
-    Route::get('/calendar', array('as' => 'admin_calendar', 'uses' => 'AdminController@staticCalendar'));
+    Route::get('/portfolios', array('as' => 'admin_portfolios'));
 
-    Route::get('/mailbox', array('as' => 'admin_mailbox', 'uses' => 'AdminController@staticMailbox'));
+    Route::get('/settings', array('as' => 'admin_settings'));
 
-    Route::get('/examples', array('as' => 'admin_examples', 'uses' => 'AdminController@staticExamples'));
+    Route::get('/error', array('as' => 'admin_error'));
 
-    Route::get('/error', array('as' => 'admin_error', 'uses' => 'AdminController@error'));
+    Route::controllers([
+        '/dashboard' => 'DashboardController',
+        '/boxes' => 'BoxesController',
+        '/equipments' => 'EquipmentsController',
+        '/emailpatterns' => 'EmailpatternsController',
+        '/testimonials' => 'TestimonialsController',
+        '/clients' => 'ClientsController',
+        '/portfolios' => 'PortfoliosController',
+        '/settings' => 'SettingsController',
+    ]);
 });
+

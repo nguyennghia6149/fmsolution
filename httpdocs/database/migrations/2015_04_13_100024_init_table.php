@@ -15,8 +15,6 @@ class InitTable extends Migration {
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('first_name', 255);
-			$table->string('last_name', 255);
 			$table->string('username', 255)->unique();
 			$table->string('email', 255)->unique();
 			$table->string('password', 255);
@@ -26,12 +24,12 @@ class InitTable extends Migration {
 
 		Schema::create('password_resets', function(Blueprint $table)
 		{
-			$table->string('username')->index();
+			$table->string('email')->index();
 			$table->string('token')->index();
 			$table->timestamp('created_at');
 		});
 
-		Schema::create('boxs', function(Blueprint $table)
+		Schema::create('boxes', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('title', 255);
@@ -41,7 +39,7 @@ class InitTable extends Migration {
 			$table->integer('type');
 		});
 
-		Schema::create('equiments', function(Blueprint $table)
+		Schema::create('equipments', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('title', 255);
@@ -82,7 +80,9 @@ class InitTable extends Migration {
 			$table->increments('id');
 			$table->string('name', 255);
 			$table->text('short_description');
-			$table->integer('client_id');
+			$table->string('image');
+			$table->integer('client_id')->unsigned();
+			$table->foreign('client_id')->references('id')->on('clients');
 		});
 
 		Schema::create('settings', function(Blueprint $table)
@@ -101,10 +101,14 @@ class InitTable extends Migration {
 	 */
 	public function down()
 	{
+		Schema::table('portfolios', function($table)
+		{
+		    $table->dropForeign('portfolios_client_id_foreign');
+		});
 		Schema::drop('users');
 		Schema::drop('password_resets');
-		Schema::drop('boxs');
-		Schema::drop('equiments');
+		Schema::drop('boxes');
+		Schema::drop('equipments');
 		Schema::drop('email_patterns');
 		Schema::drop('testimonials');
 		Schema::drop('clients');

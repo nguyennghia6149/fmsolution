@@ -134,18 +134,18 @@ class HomeController extends Controller
         return $this->render_view('page.industries');
     }
 
-    public function staticEquiment()
+    public function staticEquipment()
     {
-        $this->setMenuAct('equiment');
+        $this->setMenuAct('equipment');
         $Bcurm = [
-            'name' => 'Equiment',
+            'name' => 'Equipment',
             'list' => [
                 [ 'name' => 'Home', 'url' => 'homepage'],
-                [ 'name' => 'Equiment']
+                [ 'name' => 'Equipment']
             ]
         ];
         $this->setBreadcrumb($Bcurm);
-        return $this->render_view('page.equiment');
+        return $this->render_view('page.equipment');
     }
 
     public function staticPortfolio()

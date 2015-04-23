@@ -3,6 +3,8 @@
 @section('main-content')
 	@parent
 	<div id="page-wrapper">
-		main content
+		@if(Session::has('success'))
+			<div class="alert alert-success"><i class="fa fa-bullhorn"></i> {{ Session::get('success') }}</div>
+		@endif
 	</div>
 @stop
